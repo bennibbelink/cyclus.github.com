@@ -340,9 +340,9 @@ The command for generating |cyclus| specific nuclear data is as follows:
 Once the file is generated it must be put onto rackspace.
 
 **Update GTest:** We fetch the GTest source code during our CMake build.  To keep up with
-GTest's natural evolution cycle, please reference the latest release of Google Tests
-in ``tests/CMakeLists.txt``  If we go too long without doing this,
-it could be very painful to update.
+GTest's natural evolution cycle, please reference the latest release of Google Tests in the
+``FetchContent_Declare()`` command near the top of ``tests/CMakeLists.txt``.
+If we go too long without doing this, it could be very painful to update.
 
 Cycamore
 --------
