@@ -339,10 +339,9 @@ The command for generating |cyclus| specific nuclear data is as follows:
 
 Once the file is generated it must be put onto rackspace.
 
-**Update Gtest:** We include a copy of the fused Gtest source code within our
-source tree located in the ``tests/GoogleTest`` directory.  To keep up with
-Gtest's natural evolution cycle, please download the latest release of Google Tests
-and follow `the fused source directions here`_.  If we go too long without doing this,
+**Update GTest:** We fetch the GTest source code during our CMake build.  To keep up with
+GTest's natural evolution cycle, please reference the latest release of Google Tests
+in ``tests/CMakeLists.txt``  If we go too long without doing this,
 it could be very painful to update.
 
 Cycamore
@@ -366,4 +365,3 @@ This document is released under the CC-BY 3.0 license.
 .. _Rickshaw: https://github.com/ergs/rickshaw
 .. _CyclusJS: https://github.com/cyclus/cyclist2
 .. _release: https://github.com/cyclus/release
-.. _the fused source directions here: https://code.google.com/p/googletest/wiki/V1_6_AdvancedGuide#Fusing_Google_Test_Source_Files
