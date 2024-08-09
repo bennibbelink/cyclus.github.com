@@ -74,12 +74,16 @@ gh-preview html:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)."
 
 docker-gh-preview docker-html:
-	docker build -f docker/Dockerfile -t site --build-arg site_type=no-api .
-	docker cp site:/$(BUILDDIR) $(BUILDDIR)
+	docker build -f docker/Dockerfile -t site-image --build-arg site_type=no-api .
+	docker create --name site-container site-image
+	docker cp site-container:/$(BUILDDIR) $(BUILDDIR)
+	docker rm site-container
 
 docker-gh-preview-with-api docker-html-with-api:
-	docker build -f docker/Dockerfile -t site --build-arg site_type=api .
-	docker cp site:/$(BUILDDIR) $(BUILDDIR)
+	docker build -f docker/Dockerfile -t site-image --build-arg site_type=api .
+	docker create --name site-container site-image
+	docker cp site-container:/$(BUILDDIR) $(BUILDDIR)
+	docker rm site-container
 
 serve: html
 	cd $(BUILDDIR) && python -m http.server
