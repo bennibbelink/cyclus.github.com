@@ -11,7 +11,7 @@ RUN make gh-preview
 FROM ${base_image} AS site-api
 
 # update packages and install doxygen
-RUN mamba update --all -y && mamba install -y doxygen
+RUN mamba update --all -y && mamba install -y doxygen rsync
 
 # clean rebuild cyclus
 WORKDIR /cyclus
