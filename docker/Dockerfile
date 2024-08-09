@@ -31,6 +31,7 @@ COPY --from=site-no-api /cyclus.github.com/${BUILDDIR} /cyclus.github.com/${BUIL
 WORKDIR /cyclus.github.com
 
 # copy the docs to the site html folder
+RUN mkdir -p /cyclus.github.com/${BUILDDIR}/cyclus/api && mkdir -p /cyclus.github.com/${BUILDDIR}/cycamore/api
 RUN rsync -a /cyclus/build/doc/html/* /cyclus.github.com/${BUILDDIR}/cyclus/api/ && \
     rsync -a /cyclus/build/doc/html/* /cyclus.github.com/${BUILDDIR}/cycamore/api/
 
