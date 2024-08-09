@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Site
         run: |
-            make docker-html
+            make docker-html-with-api
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

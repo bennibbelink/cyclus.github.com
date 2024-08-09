@@ -74,12 +74,12 @@ gh-preview html:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)."
 
 docker-gh-preview docker-html:
-	docker build --platform linux/amd64 -f docker/Dockerfile -t site-deps --target site .
-	docker run --platform linux/amd64 -w /cyclus.github.com -v .:/cyclus.github.com site-deps bash -c "make gh-preview && chmod -R 777 $(BUILDDIR)"
+	docker build -f docker/Dockerfile -t site --build-arg site_type=no-api .
+	docker cp site:/$(BUILDDIR) $(BUILDDIR)
 
-docker-html-with-docs:
-	docker create --platform linux/amd64 --name api-docs -f docker/Dockerfile .
-	docker cp api-docs:$(BUILDDIR) $(BUILDDIR)
+docker-gh-preview-with-api docker-html-with-api:
+	docker build -f docker/Dockerfile -t site --build-arg site_type=api .
+	docker cp site:/$(BUILDDIR) $(BUILDDIR)
 
 serve: html
 	cd $(BUILDDIR) && python -m http.server
