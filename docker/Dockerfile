@@ -36,5 +36,5 @@ RUN rsync -a /cyclus/build/doc/html/* /cyclus.github.com/${BUILDDIR}/cyclus/api/
 
 
 FROM site-${site_type}
-COPY --from=site /cyclus.github.com/${BUILD_DIR} /${BUILD_DIR}
+COPY --from=site-no-api /cyclus.github.com/${BUILD_DIR} /${BUILD_DIR}
 
