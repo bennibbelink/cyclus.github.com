@@ -1,5 +1,4 @@
 ARG base_image=ghcr.io/cyclus/cymetric_22.04_conda/cymetric:latest
-ARG site_type=no-api
 
 FROM ${base_image} AS site-no-api
 COPY . /cyclus.github.com
@@ -37,5 +36,6 @@ RUN rsync -a /cyclus/build/doc/html/* /cyclus.github.com/${BUILDDIR}/cyclus/api/
 RUN ls -lR /cyclus.github.com
 
 FROM site-${site_type}
+ARG site_type=no-api
 COPY --from=site-${site_type} /cyclus.github.com/${BUILD_DIR} /${BUILD_DIR}
 RUN ls -lR /${BUILD_DIR}
