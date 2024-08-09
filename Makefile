@@ -84,6 +84,7 @@ docker-gh-preview-with-api docker-html-with-api:
 	docker create --name site-container site-image
 	docker cp site-container:/$(BUILDDIR) $(BUILDDIR)
 	docker rm site-container
+	ls -lR 
 
 serve: html
 	cd $(BUILDDIR) && python -m http.server

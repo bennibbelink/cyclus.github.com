@@ -34,8 +34,8 @@ WORKDIR /cyclus.github.com
 RUN mkdir -p /cyclus.github.com/${BUILDDIR}/cyclus/api && mkdir -p /cyclus.github.com/${BUILDDIR}/cycamore/api
 RUN rsync -a /cyclus/build/doc/html/* /cyclus.github.com/${BUILDDIR}/cyclus/api/ && \
     rsync -a /cyclus/build/doc/html/* /cyclus.github.com/${BUILDDIR}/cycamore/api/
-
+RUN ls -lR /cyclus.github.com
 
 FROM site-${site_type}
 COPY --from=site-no-api /cyclus.github.com/${BUILD_DIR} /${BUILD_DIR}
-
+RUN ls -lR /
