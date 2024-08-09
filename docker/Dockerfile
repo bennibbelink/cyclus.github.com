@@ -27,7 +27,7 @@ RUN make cycamoredoc
 
 # copy the built site in
 ARG BUILDDIR=./gh-build
-COPY --from=site-no-api /cyclus.github.com/${BUILDDIR} /cyclus.github.com/
+COPY --from=site-no-api /cyclus.github.com/${BUILDDIR} /cyclus.github.com/${BUILDDIR}
 WORKDIR /cyclus.github.com
 
 # copy the docs to the site html folder
